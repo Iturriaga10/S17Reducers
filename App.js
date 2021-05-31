@@ -11,11 +11,11 @@ const ACTIONS = {
 function reducer(state, action){
   switch (action.type){
     case ACTIONS.INCREMENT:
-      return {count: state.count + 1 * state.multiplier, multiplier: state.multiplier};
+      return { count: state.count + 1 * state.multiplier, multiplier: state.multiplier };
     case ACTIONS.DECREMENT:
-      return {count: state.count - 1 * state.multiplier, multiplier: state.multiplier};
+      return { count: state.count - 1 * state.multiplier, multiplier: state.multiplier };
     case ACTIONS.SETMULTIPLIER:
-        return { count: state.count, multiplier: action.multiplier};
+        return { count: state.count, multiplier: action.multiplier };
     default:
       return state;
   }
@@ -23,10 +23,10 @@ function reducer(state, action){
 
 export default function App() {
 
-  const [state, dispatch] = useReducer(reducer, { count:0, multiplier:1 });
+  const [state, dispatch] = useReducer( reducer, { count:0, multiplier:1 } );
   const [text, onChangeText] = useState(1);
 
-  const changeHandler = (value) =>{
+  const changeHandler = (value) => {
     if (!Number.isInteger(parseInt(value)) && value.length > 0) {
       Alert.alert('The multiplier is not an integer.');
       dispatch({type: ACTIONS.SETMULTIPLIER, multiplier: state.multiplier})
@@ -49,18 +49,18 @@ export default function App() {
         />
         <Button 
           title="Set"
-          onPress={() => dispatch({type: ACTIONS.SETMULTIPLIER, multiplier: text })}
+          onPress={() => dispatch({ type: ACTIONS.SETMULTIPLIER, multiplier: text })}
         />
       </View>
       <View style={styles.container}>
         <Button
-          onPress={() => dispatch({type: ACTIONS.DECREMENT})}
+          onPress={() => dispatch({ type: ACTIONS.DECREMENT })}
           title="-"
           color="#841584"
         />
         <Text>{state.count}</Text>
         <Button
-          onPress={() => dispatch({type: ACTIONS.INCREMENT})}
+          onPress={() => dispatch({ type: ACTIONS.INCREMENT })}
           title="+"
           color="#841584"
         />
